@@ -1,4 +1,0 @@
-Title: Statistical Anomaly Detector
-Disclaimer: This is a statistical anomaly detector — not a definitive attack verdict.
-Result Card Advice (Normal): Model sees this as typical traffic.
-Result Card Advice (Anomaly): Unusual pattern detected.
