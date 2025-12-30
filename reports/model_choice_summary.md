@@ -1,0 +1,15 @@
+# Model Selection Summary
+
+Selected Model: **Isolation Forest**
+
+## Rationale
+- **Recall at 1% FPR:** 0.6041 (Best)
+- **ROC-AUC:** 0.9563
+- **Inference Time:** 0.0391 ms
+
+## Backend Configuration
+- **Model Version:** if-v1-recovery (Retrained Sklearn 1.3+)
+- **Thresholds:**
+    - T_low (Normal): < 0.45
+    - T_high (Anomaly): >= 0.75
+- **Percentile Basis:** Estimated from training score distribution.

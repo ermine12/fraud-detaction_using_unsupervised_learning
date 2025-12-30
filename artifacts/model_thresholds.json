@@ -1,0 +1,5 @@
+{
+    "T_low": 0.45,
+    "T_high": 0.75,
+    "model_version": "if-v1-recovery"
+}
