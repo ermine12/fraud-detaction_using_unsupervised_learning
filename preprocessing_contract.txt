@@ -1,0 +1,48 @@
+
+================================================================================
+PREPROCESSING CONTRACT - NIDS Unsupervised Model
+================================================================================
+Generated: Auto-saved from modeling_unsupervised.ipynb
+
+CATEGORICAL FEATURE TREATMENT:
+------------------------------
+1. protocol_type → One-Hot Encoding (3 values: tcp, udp, icmp)
+2. flag → One-Hot Encoding (11 values)
+3. service2 → One-Hot Encoding (top-20 services + 'other' = 21 values)
+
+   Top-20 Services Kept:
+   http, domain_u, smtp, ftp_data, other, private, ftp, telnet, urp_i, finger, eco_i, auth, ecr_i, pop_3, IRC, ntp_u, time, X11, domain, urh_i
+
+NUMERICAL FEATURE TREATMENT:
+----------------------------
+- Scaler: RobustScaler()
+- Rationale: Heavy-tailed distributions, significant outliers in
+  src_bytes, dst_bytes, count, and other traffic volume features.
+- Applied to all 38 numeric columns.
+
+COLUMNS DROPPED:
+----------------
+- 'service' (replaced by 'service2' with grouping)
+- 'label' (target, not a feature)
+- 'is_attack' (binary target, not a feature)
+- 'difficulty_level' (metadata, not a feature)
+
+EXPECTED DIMENSIONS:
+--------------------
+- Categorical encoded: ~35 features
+- Numeric scaled: 38 features
+- Total: ~73 features
+
+CRITICAL FIT/TRANSFORM PROTOCOL:
+---------------------------------
+1. FIT encoder + scaler on X_train (NORMAL-ONLY training data)
+2. TRANSFORM X_train using fitted objects
+3. TRANSFORM X_test using SAME fitted objects (NO re-fitting)
+
+⚠️ Never fit on test data or attack data!
+
+ARTIFACTS PRODUCED:
+-------------------
+- artifacts/preprocessor.joblib (fitted ColumnTransformer)
+- artifacts/preprocessing_contract.txt (this file)
+================================================================================
